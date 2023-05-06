@@ -5,6 +5,8 @@ function onReady() { // declare onReady function
     // console.log(2);
 
     $('.submit-button').on('click', handleSubmit);
+    $('table').on('click', '.deleteMe', deleteEmployee);
+
 
 }
 
@@ -35,6 +37,10 @@ function handleSubmit() {
         <td>${employeeIdInput}</td>
         <td>${jobTitleInput}</td>
         <td>${annualSalaryInput}</td>
-        <td><button class="deleteMe">❌🍖</button></td>
+        <td><button class="deleteMe">❌🍖❌</button></td>
         </tr>`)
+}
+
+function deleteEmployee() {
+    $(this).closest('tr').remove();
 }
