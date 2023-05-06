@@ -4,9 +4,9 @@ $(document).ready(onReady); // get ready
 function onReady() { // declare onReady function
     // console.log(2);
 
-    $('.submit-button').on('click', handleSubmit);
-    $('table').on('click', '.deleteMe', deleteEmployee);
-
+    $('.submit-button').on('click', handleSubmit); // event listener for submit button clicks
+    $('table').on('click', '.deleteMe', deleteEmployee); // event listener for deleteMe button click
+    // $('.formInputClass').on('click', clearField); // failed test to clear inputs
 
 }
 
@@ -41,6 +41,17 @@ function handleSubmit() {
         </tr>`)
 }
 
+// failed attemped function to clear inputs
+// function clearField() { 
+//     console.log('clear inputs on click')
+//     $('input').val('');
+// }
+
 function deleteEmployee() {
     $(this).closest('tr').remove();
 }
+
+
+// clear input defaults on click - DONE! via css
+// add $ to salary field
+//  
