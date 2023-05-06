@@ -8,28 +8,30 @@ function onReady() { // declare onReady function
     $('table').on('click', '.deleteMe', deleteEmployee); // event listener for deleteMe button click
     // $('.formInputClass').on('click', clearField); // failed test to clear inputs
 
-}
+} // end onReady function
 
 // console.log(1)
 
-function handleSubmit() {
-    // console.log('are we there yet?')
+function handleSubmit() { // declare handle submit function
+    // console.log('are we there yet?') // log to test
     
-    let firstNameInput=$('#firstNameInput').val();
-    let lastNameInput=$('#lastNameInput').val();
-    let employeeIdInput=$('#employeeIdInput').val();
-    let jobTitleInput=$('#jobTitleInput').val();
-    let annualSalaryInput=$('#annualSalaryInput').val();
-    console.log(firstNameInput);
-    console.log(lastNameInput);
-    console.log(employeeIdInput);
-    console.log(jobTitleInput);
-    console.log(annualSalaryInput);
+    let firstNameInput=$('#firstNameInput').val(); // link input variable to form input
+    let lastNameInput=$('#lastNameInput').val(); // link input variable to form input
+    let employeeIdInput=$('#employeeIdInput').val(); // link input variable to form input
+    let jobTitleInput=$('#jobTitleInput').val(); // link input variable to form input
+    let annualSalaryInput=$('#annualSalaryInput').val(); // link input variable to form input
+    console.log(firstNameInput); // log to test
+    console.log(lastNameInput); // log to test
+    console.log(employeeIdInput); // log to test
+    console.log(jobTitleInput); // log to test
+    console.log(annualSalaryInput); // log to test
 
 
-    event.preventDefault();
-    $('input').val('');
+    event.preventDefault(); // stop browser from default clearing submit data from js
+    
+    $('input').val(''); // return input fields to default on click
 
+    // append to create new line from user inputs 
     $('tbody').append(`
         <tr>
         <td>${firstNameInput}</td>
@@ -38,8 +40,8 @@ function handleSubmit() {
         <td>${jobTitleInput}</td>
         <td>${annualSalaryInput}</td>
         <td><button class="deleteMe">❌🍖❌</button></td>
-        </tr>`)
-}
+        </tr>`) // end append command
+} // end handleSubmit function
 
 // failed attemped function to clear inputs
 // function clearField() { 
@@ -47,9 +49,9 @@ function handleSubmit() {
 //     $('input').val('');
 // }
 
-function deleteEmployee() {
-    $(this).closest('tr').remove();
-}
+function deleteEmployee() { // declare function to delete line on click of delete button
+    $(this).closest('tr').remove(); // assign removal to occur on clicked line
+} // end deleteEmployee function
 
 
 // clear input defaults on click - DONE! via css
