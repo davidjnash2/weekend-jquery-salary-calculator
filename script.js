@@ -13,9 +13,12 @@ function onReady() { // declare onReady function
 // console.log(1)
 
 let employeesArray=[];
+let allSalariesArray = [];
+
+let monthlySalary = 35;
 
 
-function handleSubmit() { // declare handle submit function
+function handleSubmit(event) { // declare handle submit function
     // console.log('are we there yet?') // log to test
 
     let firstNameInput=$('#firstNameInput').val(); // link input variable to form input
@@ -25,6 +28,7 @@ function handleSubmit() { // declare handle submit function
     let annualSalaryInput=$('#annualSalaryInput').val(); // link input variable to form input
     
     let result=false;
+
 
     console.log(firstNameInput); // log to test
     console.log(lastNameInput); // log to test
@@ -45,26 +49,40 @@ function handleSubmit() { // declare handle submit function
     } else {
      $('tbody').append(`
             <tr>
-            <td>${firstNameInput}</td>
-            <td>${lastNameInput}</td>
-            <td>${employeeIdInput}</td>
-            <td>${jobTitleInput}</td>
-            <td>${annualSalaryInput}</td>
+            <td class="newEmployee">${firstNameInput}</td>
+            <td class="newEmployee">${lastNameInput}</td>
+            <td class="newEmployee">${employeeIdInput}</td>
+            <td class="newEmployee">${jobTitleInput}</td>
+            <td class="newEmployee">${annualSalaryInput}</td>
             <td><button class="deleteMe">❌🍖❌</button></td>
             </tr>`) // end append command
-        result=true;
+        result=true; // return result;
+    } // end conditional
+
+    //collect all input data, add to employeesArray as objects
+    employeesArray.push({firstName: firstNameInput, lastName: lastNameInput, employeeId: employeeIdInput, jobTitle: jobTitleInput, salary: annualSalaryInput}); // push to array
+    console.log(employeesArray); // log to test
+
+
+    // isolate salary data, sum, divide by 12, and put in total
+    $('.monthlySalaryCost').html(monthlySalary);
+    
+    for (let obj of employeesArray) {
+        sum+=obj.salary;
     }
+    console.log(sum);
 
-    //collect salary data, sum, divide by 12
-    employeesArray.push({aFirstName: firstNameInput, bLastName: lastNameInput, cEmployeeId: employeeIdInput, dJobTitle: jobTitleInput, eSalary: annualSalaryInput});
-    console.log(employeesArray);
+    // turn cost background red if over 20k
 
-   // return result;
+
 } // end handleSubmit function
 
 
 function deleteEmployee() { // declare function to delete line on click of delete button
     $(this).closest('tr').remove(); // assign removal to occur on clicked line
+
+    // add capacity to delete money from total
+
 } // end deleteEmployee function
 
  
