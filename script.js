@@ -29,6 +29,8 @@ function handleSubmit(event) { // declare handle submit function
     
     let result=false;
 
+    let sum = 0;
+
 
     console.log(firstNameInput); // log to test
     console.log(lastNameInput); // log to test
@@ -65,7 +67,7 @@ function handleSubmit(event) { // declare handle submit function
 
 
     // isolate salary data, sum, divide by 12, and put in total
-    $('.monthlySalaryCost').html(monthlySalary);
+    $('#monthlySalaryCost').html(monthlySalary);
     
     for (let obj of employeesArray) {
         sum+=obj.salary;
@@ -73,6 +75,10 @@ function handleSubmit(event) { // declare handle submit function
     console.log(sum);
 
     // turn cost background red if over 20k
+    // use if stmt
+    // if (monthlySalary > 20000.00) {
+    // $('#monthlySalaryCost').css(background-color: red, color: white);
+    // }
 
 
 } // end handleSubmit function
@@ -94,7 +100,11 @@ function deleteEmployee() { // declare function to delete line on click of delet
 
 // A 'Submit' button should collect the form information, 
 // store the information to calculate monthly costs, 
-// append information to the DOM and clear the input fields. Using the stored information, calculate monthly costs and append this to the to DOM. If the total monthly cost exceeds $20,000, add a red background color to the total monthly cost.
+// append information to the DOM and clear the input fields. 
+// Using the stored information, calculate monthly costs and 
+// append this to the to DOM. If the total monthly cost 
+// exceeds $20,000, add a red background color to the total 
+// monthly cost.
 
 // Create a delete button that removes an employee from 
 // the DOM. For Base mode, it does not need to remove that 

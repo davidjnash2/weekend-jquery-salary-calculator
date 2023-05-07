@@ -43,3 +43,7 @@ td {
 .newEmployee {
     padding-left: 5px;
 }
+
+#monthlySalaryCost {
+    background-color: seagreen;
+}
