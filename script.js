@@ -12,6 +12,9 @@ function onReady() { // declare onReady function
 
 // console.log(1)
 
+let employees=[];
+
+
 function handleSubmit() { // declare handle submit function
     // console.log('are we there yet?') // log to test
 
@@ -51,20 +54,39 @@ function handleSubmit() { // declare handle submit function
             </tr>`) // end append command
         result=true;
     }
+
+    //collect salary data, sum, divide by 12
+    
+
+
    // return result;
 } // end handleSubmit function
 
-// failed attemped function to clear inputs
-// function clearField() { 
-//     console.log('clear inputs on click')
-//     $('input').val('');
-// }
 
 function deleteEmployee() { // declare function to delete line on click of delete button
     $(this).closest('tr').remove(); // assign removal to occur on clicked line
 } // end deleteEmployee function
 
+ 
 
-// clear input defaults on click - DONE! via css
-// add $ to salary field
-//  
+// The application should have an input form that collects 
+// employee first name, last name, ID number, job title, 
+// annual salary.
+
+
+// A 'Submit' button should collect the form information, 
+// store the information to calculate monthly costs, 
+// append information to the DOM and clear the input fields. Using the stored information, calculate monthly costs and append this to the to DOM. If the total monthly cost exceeds $20,000, add a red background color to the total monthly cost.
+
+// Create a delete button that removes an employee from 
+// the DOM. For Base mode, it does not need to remove that 
+// Employee's salary from the reported total.
+
+// Files Provided
+// No files have been provided (just instructions.md 
+// and a readme.md). Instead of forking and cloning this 
+// repo, please choose "Use This Template" (green button) 
+// and name your new repo "weekend-jquery-salary-calculator"
+//  and clone down from there. Make sure to commit 
+// regularily!
+

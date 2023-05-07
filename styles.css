@@ -7,6 +7,14 @@ body {
         background-repeat: no-repeat;
 }
 
+.mainTable {
+    display: block;
+    margin: auto;
+    width: fit-content;
+    object-position: center;
+    object-fit: relative;
+}
+
 table {
     border: 2px solid black;
 }
@@ -26,4 +34,8 @@ tr {
 
 td {
     border: 2px solid black;
+}
+
+.bottomRow{
+    border: none;
 }
