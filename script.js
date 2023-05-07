@@ -52,11 +52,13 @@ function handleSubmit(event) { // declare handle submit function
             <td class="newEmployee">${lastNameInput}</td>
             <td class="newEmployee">${employeeIdInput}</td>
             <td class="newEmployee">${jobTitleInput}</td>
-            <td class="newEmployee">${annualSalaryInput}</td>
-            <td><button class="deleteMe">❌🍖❌</button></td>
+            <td class="newEmployee">$${annualSalaryInput}</td>
+            <td><button class="deleteMe">delete</button></td>
             </tr>`) // end append command
         result=true; // append result;
     } // end conditional
+
+    // $('#deleteMe').css('display', 'flex');
 
     //collect all input data, add to employeesArray as objects
     employeesArray.push({firstName: firstNameInput, lastName: lastNameInput, employeeId: employeeIdInput, jobTitle: jobTitleInput, salary: annualSalaryInput}); // push to array
@@ -78,8 +80,7 @@ function handleSubmit(event) { // declare handle submit function
     $('#monthlySalaryCost').text(monthlySalary);
     
 
-    // turn cost background red if over 20k
-    // use if stmt
+    // use if conditional turn cost background red if over 20k
     if (monthlySalary > 20000.00) {
     $('#monthlySalaryCost').css('background', 'red');
     }
@@ -97,28 +98,9 @@ function deleteEmployee() { // declare function to delete line on click of delet
 
  
 
-// The application should have an input form that collects 
-// employee first name, last name, ID number, job title, 
-// annual salary.
 
 
-// A 'Submit' button should collect the form information, 
-// store the information to calculate monthly costs, 
-// append information to the DOM and clear the input fields. 
-// Using the stored information, calculate monthly costs and 
-// append this to the to DOM. If the total monthly cost 
-// exceeds $20,000, add a red background color to the total 
-// monthly cost.
-
-// Create a delete button that removes an employee from 
-// the DOM. For Base mode, it does not need to remove that 
-// Employee's salary from the reported total.
-
-// Files Provided
-// No files have been provided (just instructions.md 
-// and a readme.md). Instead of forking and cloning this 
-// repo, please choose "Use This Template" (green button) 
-// and name your new repo "weekend-jquery-salary-calculator"
-//  and clone down from there. Make sure to commit 
-// regularily!
+// set so that deleteEmployee function aggregates to cost total
+// check to see if clicking submit can advance cursor, or clear from input
+// clean up DOM styling
 

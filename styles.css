@@ -7,12 +7,45 @@ body {
         background-repeat: no-repeat;
 }
 
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
 .mainTable {
     display: block;
     margin: auto;
     width: fit-content;
     object-position: center;
     object-fit: relative;
+}
+
+button {
+        background-color: hotpink;
+        border: none;
+        color: black;
+        padding: 3px 25px;
+        text-align: center;
+        text-decoration: underline;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        border-radius: 5px;
+        font-weight: bold;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+
+.deleteMe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
 }
 
 table {
@@ -33,7 +66,8 @@ tr {
 } 
 
 td {
-    border: 2px solid black;
+    border-bottom: 2px solid black;
+    margin-left: 0;
 }
 
 .bottomRow {
@@ -44,6 +78,6 @@ td {
     padding-left: 5px;
 }
 
-#monthlySalaryCost {
+/* #monthlySalaryCost {
     background-color: seagreen;
-}
+} */

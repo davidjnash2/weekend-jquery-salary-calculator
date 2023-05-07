@@ -18,7 +18,7 @@
     </header>
     <main>
         <section id="mainTable">
-            <h3>Employees</h3>
+            <h3>Staff Register</h3>
             <form>
                 <table>
                     <thead>
@@ -67,11 +67,11 @@
                             id="annualSalaryInput"
                             class="formInputClass"
                             placeholder="Annual Salary"
-                            type="text"
+                            type="number"
                             required
                             autocomplete="off"
                             ></td>
-                            <td><button class="submit-button">You're hired!</button></td>
+                            <td><div class="center"><button class="submit-button">add</button></div></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,7 +84,7 @@
                             <td class="bottomRow"></td>
                             <td class="bottomRow"></td>
                             <td class="bottomRow">Monthly Labor Cost:</td>
-                            <td class="bottomRow">$<span id="monthlySalaryCost">0</span></td>
+                            <td class="bottomRow">$<span id="monthlySalaryCost">0.00</span></td>
                     </tfoot>
                 </table>
             </form>
