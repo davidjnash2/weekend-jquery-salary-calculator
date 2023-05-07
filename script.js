@@ -15,6 +15,7 @@ function onReady() { // declare onReady function
 let employeesArray=[]; // declare global empty array for employee objects
 // let allSalariesArray = []; // thought I might need this for calculating salaries, but now not sure if I will, leaving just in case
 
+let monthlySalary= Number(0);
 
 
 function handleSubmit(event) { // declare handle submit function
@@ -52,13 +53,16 @@ function handleSubmit(event) { // declare handle submit function
             <td class="newEmployee">${lastNameInput}</td>
             <td class="newEmployee">${employeeIdInput}</td>
             <td class="newEmployee">${jobTitleInput}</td>
-            <td class="newEmployee">$${annualSalaryInput}</td>
+            <td id="currency" class="newEmployeeMoney">$${annualSalaryInput}</td>
             <td><button class="deleteMe">delete</button></td>
             </tr>`) // end append command
         result=true; // append result;
     } // end conditional
 
-    // $('#deleteMe').css('display', 'flex');
+    // $('.currency').css('align', 'right');
+    // $('.currency').css('content', '$');
+    // $('.currency').css('float', 'justify');
+    $('#deleteMe').css('display', 'flex');
 
     //collect all input data, add to employeesArray as objects
     employeesArray.push({firstName: firstNameInput, lastName: lastNameInput, employeeId: employeeIdInput, jobTitle: jobTitleInput, salary: annualSalaryInput}); // push to array
@@ -72,20 +76,23 @@ function handleSubmit(event) { // declare handle submit function
     }
     console.log(sum); // log to test
 
-    let monthlySalary = (sum / 12).toFixed(2); // declare monthlySalary local variable and set value to sum operation performed within handleSubmit function
+    monthlySalary = Number((sum / 12).toFixed(2));
     console.log(monthlySalary); // log to test
 
 
     // isolate salary data, sum, divide by 12, and put in total
     $('#monthlySalaryCost').text(monthlySalary);
+
     
 
     // use if conditional turn cost background red if over 20k
-    if (monthlySalary > 20000.00) {
+    if (monthlySalary > 20000) {
     $('#monthlySalaryCost').css('background', 'red');
     }
+    let formattedCost = monthlySalary.toLocaleString("en-US", { style: "currency", currency: "USD" });
+    document.getElementById("monthlySalaryCost").textContent = formattedCost;
 
-
+    
 } // end handleSubmit function
 
 
