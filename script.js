@@ -12,7 +12,7 @@ function onReady() { // declare onReady function
 
 // console.log(1)
 
-let employees=[];
+let employeesArray=[];
 
 
 function handleSubmit() { // declare handle submit function
@@ -40,7 +40,7 @@ function handleSubmit() { // declare handle submit function
 
     
     // append to create new line from user inputs
-    if (firstNameInput === '' || lastNameInput === ''|| employeeIdInput === '' || jobTitleInput === '' || annualSalaryInput === '') {
+    if ( firstNameInput === '' || lastNameInput === '' || employeeIdInput === '' || jobTitleInput === '' || annualSalaryInput === '' ) {
         alert('You did not complete all the required fields.'); 
     } else {
      $('tbody').append(`
@@ -56,8 +56,8 @@ function handleSubmit() { // declare handle submit function
     }
 
     //collect salary data, sum, divide by 12
-    
-
+    employeesArray.push({aFirstName: firstNameInput, bLastName: lastNameInput, cEmployeeId: employeeIdInput, dJobTitle: jobTitleInput, eSalary: annualSalaryInput});
+    console.log(employeesArray);
 
    // return result;
 } // end handleSubmit function
