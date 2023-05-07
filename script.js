@@ -97,7 +97,28 @@ function handleSubmit(event) { // declare handle submit function
 
 
 function deleteEmployee() { // declare function to delete line on click of delete button
+    // let index = $(this).closest().index();
     $(this).closest('tr').remove(); // assign removal to occur on clicked line
+    // employeesArray.splice(index, 1);
+    // console.log(employeesArray);
+
+    // let sum=monthlySalary * 12;
+    // console.log(sum);
+
+    // for (let obj of employeesArray) { // for of loop to get salary info for each employee object in employeesArray
+    //     sum-=obj.salary; // add all salaries together
+    // }
+    // console.log(sum);
+
+
+    // monthlySalary = Number((sum / 12).toFixed(2));
+    // console.log(monthlySalary); // log to test
+
+    
+    
+
+    // isolate salary data, sum, divide by 12, and put in total
+    // $('#monthlySalaryCost').text(monthlySalary);
 
     // add capacity to delete money from total
 
