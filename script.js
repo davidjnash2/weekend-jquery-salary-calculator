@@ -12,26 +12,20 @@ function onReady() { // declare onReady function
 
 // console.log(1)
 
-let employeesArray=[];
-let allSalariesArray = [];
+let employeesArray=[]; // declare global empty array for employee objects
+// let allSalariesArray = []; // thought I might need this for calculating salaries, but now not sure if I will, leaving just in case
 
-let monthlySalary = 35;
 
 
 function handleSubmit(event) { // declare handle submit function
     // console.log('are we there yet?') // log to test
 
-    let firstNameInput=$('#firstNameInput').val(); // link input variable to form input
-    let lastNameInput=$('#lastNameInput').val(); // link input variable to form input
-    let employeeIdInput=$('#employeeIdInput').val(); // link input variable to form input
-    let jobTitleInput=$('#jobTitleInput').val(); // link input variable to form input
-    let annualSalaryInput=$('#annualSalaryInput').val(); // link input variable to form input
+    let firstNameInput=$('#firstNameInput').val(); // declare local variable to link input variable to form input
+    let lastNameInput=$('#lastNameInput').val(); // declare local variable to link input variable to form input
+    let employeeIdInput=$('#employeeIdInput').val(); // declare local variable to link input variable to form input
+    let jobTitleInput=$('#jobTitleInput').val(); // declare local variable to link input variable to form input
+    let annualSalaryInput=+$('#annualSalaryInput').val(); // declare local variable to link input variable to form input
     
-    let result=false;
-
-    let sum = 0;
-
-
     console.log(firstNameInput); // log to test
     console.log(lastNameInput); // log to test
     console.log(employeeIdInput); // log to test
@@ -45,7 +39,10 @@ function handleSubmit(event) { // declare handle submit function
     $('input').val(''); // return input fields to default on click
 
     
-    // append to create new line from user inputs
+    
+    let result=false; // set default result for if/else conditional to ensure all fields are filled before submitting
+    // use if/else conditional to either not accept submit if incomplete, or 
+    // append new employee if fields are complete
     if ( firstNameInput === '' || lastNameInput === '' || employeeIdInput === '' || jobTitleInput === '' || annualSalaryInput === '' ) {
         alert('You did not complete all the required fields.'); 
     } else {
@@ -58,21 +55,28 @@ function handleSubmit(event) { // declare handle submit function
             <td class="newEmployee">${annualSalaryInput}</td>
             <td><button class="deleteMe">❌🍖❌</button></td>
             </tr>`) // end append command
-        result=true; // return result;
+        result=true; // append result;
     } // end conditional
 
     //collect all input data, add to employeesArray as objects
     employeesArray.push({firstName: firstNameInput, lastName: lastNameInput, employeeId: employeeIdInput, jobTitle: jobTitleInput, salary: annualSalaryInput}); // push to array
     console.log(employeesArray); // log to test
 
+    
+    let sum = 0; // declare local sum variable and set initial value
+
+    for (let obj of employeesArray) { // for of loop to get salary info for each employee object in employeesArray
+        sum+=obj.salary; // add all salaries together
+    }
+    console.log(sum); // log to test
+
+    let monthlySalary = sum / 12; // declare monthlySalary global variable and set value to sum operation performed within handleSubmit function
+    console.log(monthlySalary); // log to test
+
 
     // isolate salary data, sum, divide by 12, and put in total
-    $('#monthlySalaryCost').html(monthlySalary);
+    $('#monthlySalaryCost').text(monthlySalary);
     
-    for (let obj of employeesArray) {
-        sum+=obj.salary;
-    }
-    console.log(sum);
 
     // turn cost background red if over 20k
     // use if stmt
