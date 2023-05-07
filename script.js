@@ -70,7 +70,7 @@ function handleSubmit(event) { // declare handle submit function
     }
     console.log(sum); // log to test
 
-    let monthlySalary = sum / 12; // declare monthlySalary global variable and set value to sum operation performed within handleSubmit function
+    let monthlySalary = (sum / 12).toFixed(2); // declare monthlySalary local variable and set value to sum operation performed within handleSubmit function
     console.log(monthlySalary); // log to test
 
 
@@ -80,9 +80,9 @@ function handleSubmit(event) { // declare handle submit function
 
     // turn cost background red if over 20k
     // use if stmt
-    // if (monthlySalary > 20000.00) {
-    // $('#monthlySalaryCost').css(background-color: red, color: white);
-    // }
+    if (monthlySalary > 20000.00) {
+    $('#monthlySalaryCost').css('background', 'red');
+    }
 
 
 } // end handleSubmit function
