@@ -12,21 +12,25 @@ function onReady() { // declare onReady function
 
 // console.log(1)
 
-let employeesArray=[]; // declare global empty array for employee objects
+let employeesArray = []; // declare global empty array for employee objects
 // let allSalariesArray = []; // thought I might need this for calculating salaries, but now not sure if I will, leaving just in case
 
-let monthlySalary= Number(0);
+let monthlySalary = Number(0);
 
+let lineCounter = 0;
 
 function handleSubmit(event) { // declare handle submit function
     // console.log('are we there yet?') // log to test
+
 
     let firstNameInput=$('#firstNameInput').val(); // declare local variable to link input variable to form input
     let lastNameInput=$('#lastNameInput').val(); // declare local variable to link input variable to form input
     let employeeIdInput=$('#employeeIdInput').val(); // declare local variable to link input variable to form input
     let jobTitleInput=$('#jobTitleInput').val(); // declare local variable to link input variable to form input
-    let annualSalaryInput=+$('#annualSalaryInput').val(); // declare local variable to link input variable to form input
+    let annualSalaryInput=+$('#annualSalaryInput').val(); // declare local variable to link input variable to form input, with plus sign unary operator to ensure value is captured as number
     
+    lineCounter++;
+
     console.log(firstNameInput); // log to test
     console.log(lastNameInput); // log to test
     console.log(employeeIdInput); // log to test
@@ -41,14 +45,15 @@ function handleSubmit(event) { // declare handle submit function
 
     
     
-    let result=false; // set default result for if/else conditional to ensure all fields are filled before submitting
+    let result = false; // set default result for if/else conditional to ensure all fields are filled before submitting
     // use if/else conditional to either not accept submit if incomplete, or 
     // append new employee if fields are complete
     if ( firstNameInput === '' || lastNameInput === '' || employeeIdInput === '' || jobTitleInput === '' || annualSalaryInput === '' ) {
         alert('You did not complete all the required fields.'); 
     } else {
      $('tbody').append(`
-            <tr>
+            <tr class="inputLine">
+            <td id="lineCounter" class="newEmployee">${lineCounter}</td>
             <td class="newEmployee">${firstNameInput}</td>
             <td class="newEmployee">${lastNameInput}</td>
             <td class="newEmployee">${employeeIdInput}</td>
@@ -56,8 +61,9 @@ function handleSubmit(event) { // declare handle submit function
             <td id="currency" class="newEmployeeMoney">$${annualSalaryInput}</td>
             <td><button class="deleteMe">delete</button></td>
             </tr>`) // end append command
-        result=true; // append result;
+        result = true; // append result;
     } // end conditional
+
 
     // $('.currency').css('align', 'right');
     // $('.currency').css('content', '$');
@@ -65,7 +71,13 @@ function handleSubmit(event) { // declare handle submit function
     $('#deleteMe').css('display', 'flex');
 
     //collect all input data, add to employeesArray as objects
-    employeesArray.push({firstName: firstNameInput, lastName: lastNameInput, employeeId: employeeIdInput, jobTitle: jobTitleInput, salary: annualSalaryInput}); // push to array
+    employeesArray.push({
+        lineNumber: lineCounter,
+        firstName: firstNameInput, 
+        lastName: lastNameInput, 
+        employeeId: employeeIdInput, 
+        jobTitle: jobTitleInput, 
+        salary: annualSalaryInput}); // push to array
     console.log(employeesArray); // log to test
 
     
@@ -76,7 +88,7 @@ function handleSubmit(event) { // declare handle submit function
     }
     console.log(sum); // log to test
 
-    monthlySalary = Number((sum / 12).toFixed(2));
+    monthlySalary = Number((sum / 12).toFixed(2)); // calculate monthly salary total, ensure value is number, limit to two decimal places
     console.log(monthlySalary); // log to test
 
 
@@ -87,7 +99,7 @@ function handleSubmit(event) { // declare handle submit function
 
     // use if conditional turn cost background red if over 20k
     if (monthlySalary > 20000) {
-    $('#monthlySalaryCost').css('background', 'red');
+    $('#monthlySalaryCost').css('background', 'red').css('color', 'white');
     }
     let formattedCost = monthlySalary.toLocaleString("en-US", { style: "currency", currency: "USD" });
     document.getElementById("monthlySalaryCost").textContent = formattedCost;
@@ -97,14 +109,36 @@ function handleSubmit(event) { // declare handle submit function
 
 
 function deleteEmployee() { // declare function to delete line on click of delete button
-    // let index = $(this).closest().index();
+    let index = +$(this).closest('tr').children('#lineCounter').text();
+    console.log(index);
     $(this).closest('tr').remove(); // assign removal to occur on clicked line
-    // employeesArray.splice(index, 1);
-    // console.log(employeesArray);
+    employeesArray.splice(index, 1);
+    console.log(employeesArray);
+    
+    let sum = 0; // declare local sum variable and set initial value
+    console.log(sum); // log to test
 
-    // let sum=monthlySalary * 12;
-    // console.log(sum);
+    for (let employee of employeesArray) { // for of loop to get salary info for each employee object in employeesArray
+        sum+=employee.salary; // add all salaries together
+    }
+    console.log(sum); // log to test
 
+    monthlySalary = Number((sum / 12).toFixed(2)); // isolate salary data, sum, divide by 12, and put in total
+    console.log(monthlySalary); // log to test
+
+
+    
+    $('#monthlySalaryCost').text(monthlySalary); // put monthly salary value to DOM
+
+    
+
+    // use if conditional turn cost background red if over 20k
+    if (monthlySalary < 20000) {
+    $('#monthlySalaryCost').css('background', 'skyblue').css('color', 'black');
+    }
+    let formattedCost = monthlySalary.toLocaleString("en-US", { style: "currency", currency: "USD" });
+    document.getElementById("monthlySalaryCost").textContent = formattedCost;
+ 
     // for (let obj of employeesArray) { // for of loop to get salary info for each employee object in employeesArray
     //     sum-=obj.salary; // add all salaries together
     // }
